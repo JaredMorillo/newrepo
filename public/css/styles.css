@@ -1,6 +1,140 @@
 /******* Change Box Model ***************/
 *,
 *:before,
+/* Mobile-first CSS */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.hero {
+  text-align: center;
+  padding: 20px;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+.hero h1 {
+  font-size: 2em;
+  color: #0056b3;
+  margin-bottom: 10px;
+}
+
+.hero h2 {
+  font-size: 1.5em;
+  color: #0078d4;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.hero img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin: 10px 0;
+}
+
+.hero button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  box-shadow: 0 4px #999;
+}
+
+.hero button:hover {
+  background-color: #45a049;
+}
+
+.hero button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 2px #666;
+  transform: translateY(2px);
+}
+
+.upgrades {
+  margin: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+}
+
+.upgrades h2 {
+  text-align: center;
+  font-size: 1.8em;
+  color: #0056b3;
+  margin-bottom: 20px;
+}
+
+.upgrades .grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.upgrades .grid div {
+  text-align: center;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.upgrades .grid img {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.upgrades .grid p {
+  font-size: 1.1em;
+  color: #333;
+}
+
+.reviews {
+  margin: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+}
+
+.reviews h2 {
+  text-align: center;
+  font-size: 1.8em;
+  color: #0056b3;
+  margin-bottom: 15px;
+}
+
+.reviews ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.reviews ul li {
+  background: #e9e9e9;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  font-size: 1.1em;
+  color: #333;
+}
+
 *:after {
   box-sizing: border-box;
 }

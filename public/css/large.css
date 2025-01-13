@@ -1,0 +1,21 @@
+/* Larger screens */
+@media (min-width: 768px) {
+    .hero {
+        max-width: 800px;
+        margin: 20px auto;
+    }
+
+    .upgrades {
+        max-width: 800px;
+        margin: 20px auto;
+    }
+
+    .upgrades .grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .reviews {
+        max-width: 800px;
+        margin: 20px auto;
+    }
+}
