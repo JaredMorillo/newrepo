@@ -7,14 +7,21 @@
 /* Mobile-first CSS */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+  background-image: url('/images/site/small_check.jpg');
+  background-size: cover; /* Ensures the image covers the body */
+  background-position: center; /* Centers the image */
+  background-attachment: fixed; 
   margin: 0;
   padding: 0;
   color: #333;
-  background-image: url('/public/images/site/small_check.jpg');
-  background: 100%;
 }
+/*.background{
 
+  background-size: cover;  
+  background-position: center; 
+  height: 100%;  
+  width: 100%;  
+}*/
 header {
   background-color: black;
   color: white;
@@ -80,7 +87,7 @@ nav .right {
 }
 
 .hero {
-  text-align: left;
+  text-align: center;
   padding: 20px;
   background-color: #fff;
   border: 2px solid #ccc;
@@ -92,17 +99,20 @@ nav .right {
   font-size: 2em;
   color: #0056b3;
   margin-bottom: 10px;
+  text-align: left;
 }
 
 .hero h2 {
   font-size: 1.5em;
   color: #0078d4;
   margin-bottom: 15px;
+  text-align: left;
 }
 
 .hero p {
   font-size: 1.2em;
   margin-bottom: 20px;
+  text-align: left;
 }
 
 .hero img {
@@ -110,6 +120,7 @@ nav .right {
   max-width: 400px;
   height: auto;
   margin: 10px 0;
+  align-items: right;
 }
 
 .hero button {
@@ -120,6 +131,7 @@ nav .right {
   border-radius: 5px;
   font-size: 1em;
   cursor: pointer;
+  align-items: left;
   box-shadow: 0 4px #999;
 }
 
