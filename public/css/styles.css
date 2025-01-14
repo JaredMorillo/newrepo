@@ -120,7 +120,6 @@ nav .right {
   max-width: 400px;
   height: auto;
   margin: 10px 0;
-  align-items: right;
 }
 
 .hero button {
@@ -131,7 +130,6 @@ nav .right {
   border-radius: 5px;
   font-size: 1em;
   cursor: pointer;
-  align-items: left;
   box-shadow: 0 4px #999;
 }
 
