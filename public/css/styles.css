@@ -1,6 +1,9 @@
 /******* Change Box Model ***************/
 *,
 *:before,
+*:after {
+  box-sizing: border-box;
+}
 /* Mobile-first CSS */
 body {
   font-family: Arial, sans-serif;
@@ -8,10 +11,76 @@ body {
   margin: 0;
   padding: 0;
   color: #333;
+  background-image: url('/public/images/site/small_check.jpg');
+  background: 100%;
+}
+
+header {
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  font-family: Arial, sans-serif;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+header .account-link {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+header .account-link:hover {
+  text-decoration: underline;
+}
+
+nav {
+  background-color: darkslategray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 20px;
+  font-family: Arial, sans-serif;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  margin: 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+nav ul li a:hover {
+  text-decoration: none;
+}
+
+nav .right {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 .hero {
-  text-align: center;
+  text-align: left;
   padding: 20px;
   background-color: #fff;
   border: 2px solid #ccc;
@@ -135,6 +204,3 @@ body {
   color: #333;
 }
 
-*:after {
-  box-sizing: border-box;
-}
