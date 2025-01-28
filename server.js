@@ -10,6 +10,7 @@ const expressLayouts = require("express-ejs-layouts");
 const static = require("./routes/static");
 const env = require("dotenv").config();
 const app = express();
+const utilities = require("./utilities");
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute");
 
@@ -32,6 +33,10 @@ app.use(static);
  // Inventory routes
 app.use("/inv", inventoryRoute);
 
+// File Not Found Route - must be last route in list
+app.use(async (req, res, next) => {
+  next({status: 404, message: 'Sorry, we appear to have lost that page.'})
+})
 /* ***********************
  * Local Server Information
  * Values from .env (environment) file
