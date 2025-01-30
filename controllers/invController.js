@@ -3,6 +3,19 @@ const utilities = require("../utilities/")
 
 const invCont = {}
 
+async function getVehicleDetail(req, res) {
+  const inv_id = req.params.inv_id;
+  const vehicleData = await inventoryModel.getVehicleById(inv_id);
+  
+  if (!vehicleData) {
+    return res.status(404).render("errors/error", { message: "Vehicle not found" });
+  }
+
+  const vehicleHTML = utilities.buildVehicleHTML(vehicleData);
+
+  res.render("inventory/detail", { vehicleHTML });
+}
+
 /* ***************************
  *  Build inventory by classification view
  * ************************** */
@@ -20,3 +33,4 @@ invCont.buildByClassificationId = async function (req, res, next) {
 }
 
 module.exports = invCont
+module.exports = { getVehicleDetail };
