@@ -39,6 +39,4 @@ async function getVehicleById(inv_id) {
   }
 }
 
-module.exports = { getVehicleById };
-
-module.exports = {getClassifications, getInventoryByClassificationId};
+module.exports = {getClassifications, getInventoryByClassificationId, getVehicleById};

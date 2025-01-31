@@ -24,28 +24,6 @@ Util.getNav = async function (req, res, next) {
   return list
 }
 
-/*************************************
- * Build a function for the vehicle***
- *************************************/
-function buildVehicleHTML(vehicle) {
-  return `
-    <h1>${vehicle.inv_make} ${vehicle.inv_model}</h1>
-    <img src="${vehicle.inv_image}" alt="Image of ${vehicle.inv_make} ${vehicle.inv_model}">
-    <p><strong>Year:</strong> ${vehicle.inv_year}</p>
-    <p><strong>Price:</strong> $${vehicle.inv_price.toLocaleString()}</p>
-    <p><strong>Mileage:</strong> ${vehicle.inv_miles.toLocaleString()} miles</p>
-    <p><strong>Color:</strong> ${vehicle.inv_color}</p>
-    <p><strong>Description:</strong> ${vehicle.inv_description}</p>
-  `;
-}
-
-module.exports = { buildVehicleHTML };
-
-module.exports = Util
-
-
-
-
 /* **************************************
 * Build the classification view HTML
 * ************************************ */
@@ -78,3 +56,20 @@ Util.buildClassificationGrid = async function(data){
   }
   return grid
 }
+
+/*************************************
+ * Build a function for the vehicle***
+ *************************************/
+Util.buildVehicleHTML = async function(vehicle) {
+  return `
+    <h1>${vehicle.inv_make} ${vehicle.inv_model}</h1>
+    <img src="${vehicle.inv_image}" alt="Image of ${vehicle.inv_make} ${vehicle.inv_model}">
+    <p><strong>Year:</strong> ${vehicle.inv_year}</p>
+    <p><strong>Price:</strong> $${vehicle.inv_price.toLocaleString()}</p>
+    <p><strong>Mileage:</strong> ${vehicle.inv_miles.toLocaleString()} miles</p>
+    <p><strong>Color:</strong> ${vehicle.inv_color}</p>
+    <p><strong>Description:</strong> ${vehicle.inv_description}</p>
+  `;
+}
+
+module.exports = Util
