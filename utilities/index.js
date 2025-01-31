@@ -39,7 +39,6 @@ Util.buildClassificationGrid = async function(data){
       +'" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model 
       +' on CSE Motors" /></a>'
       grid += '<div class="namePrice">'
-      grid += '<hr />'
       grid += '<h2>'
       grid += '<a href="../../inv/detail/' + vehicle.inv_id +'" title="View ' 
       + vehicle.inv_make + ' ' + vehicle.inv_model + ' details">' 
@@ -47,6 +46,7 @@ Util.buildClassificationGrid = async function(data){
       grid += '</h2>'
       grid += '<span>$' 
       + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</span>'
+      grid += '<hr />'
       grid += '</div>'
       grid += '</li>'
     })
@@ -61,15 +61,25 @@ Util.buildClassificationGrid = async function(data){
  * Build a function for the vehicle***
  *************************************/
 Util.buildVehicleHTML = async function(vehicle) {
-  return `
-    <h1>${vehicle.inv_make} ${vehicle.inv_model}</h1>
-    <img src="${vehicle.inv_image}" alt="Image of ${vehicle.inv_make} ${vehicle.inv_model}">
-    <p><strong>Year:</strong> ${vehicle.inv_year}</p>
-    <p><strong>Price:</strong> $${vehicle.inv_price.toLocaleString()}</p>
-    <p><strong>Mileage:</strong> ${vehicle.inv_miles.toLocaleString()} miles</p>
-    <p><strong>Color:</strong> ${vehicle.inv_color}</p>
-    <p><strong>Description:</strong> ${vehicle.inv_description}</p>
-  `;
+  let content
+  if (vehicle.length > 0) {
+    const vehicleTitle = `${vehicle[0].inv_make} ${vehicle[0].inv_model}`;
+    content = '<div class="individual-vehicle-container">'
+    content += '<div class="image-container"><img src="' + vehicle[0].inv_thumbnail
+    + '" alt="Image of ' + vehicleTitle
+    + ' on CSE Motors" /></div>';
+    content += '<div class="information-container">';
+    content += '<p class="title">' + vehicleTitle + '</p>';
+    content += '<p>' + 'Price: $' + '<span class="price">' + vehicle[0].inv_price + '</span>' + '</p>';
+    content += '<p>' + 'Description: ' + '<span class="description">' + vehicle[0].inv_description + '</span>' + '</p>';
+    content += '<p>' + 'Color: ' + '<span class="color">' + vehicle[0].inv_color + '</span>' + '</p>';
+    content += '<p>' + 'Miles: ' + '<span class="miles">' + vehicle[0].inv_miles + '</span>' + '</p>';
+    content += '</div>'
+    content += '</div>';
+  } else {
+    content = '<p class="notice">Sorry, no details could be found.</p>';
+  }
+  return content;
 }
 
 module.exports = Util

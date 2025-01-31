@@ -37,4 +37,7 @@
         max-width: 800px;
         margin: 20px auto;
     }
+    .individual-vehicle-container{
+      grid-template-columns: repeat(2, 1fr);
+    }
 }

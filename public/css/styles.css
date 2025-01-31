@@ -12,6 +12,11 @@
 
 body {
   margin: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+li{
+  list-style: none;
 }
 
 #wrapper {
@@ -220,4 +225,17 @@ nav .right {
   font-size: 1.1em;
   color: #333;
 }
-
+.information-container{
+  font-weight: bold;
+}
+.price, .description, .color, .miles{
+  font-weight: normal;
+}
+.individual-vehicle-container{
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(1fr);
+}
+.individual-vehicle-container img{
+  width: 100%;
+}

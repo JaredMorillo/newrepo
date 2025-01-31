@@ -29,13 +29,12 @@ async function getInventoryByClassificationId(classification_id) {
 async function getVehicleById(inv_id) {
   try {
     const result = await pool.query(
-      "SELECT * FROM inventory WHERE inv_id = $1",
+      `SELECT * FROM inventory WHERE inv_id = $1`,
       [inv_id]
     );
-    return result.rows[0]; // Devuelve solo un vehículo
+    return result.rows; // Devuelve todas las lineas 
   } catch (error) {
     console.error("Error fetching vehicle:", error);
-    return null;
   }
 }
 
