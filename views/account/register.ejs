@@ -1,0 +1,24 @@
+<body>
+    <h2>Register</h2>
+    <div class="container">
+        <p><em>ALL FIELDS ARE REQUIRED.</em></p>
+        <form action="/register" method="POST">
+            <label>First name:</label>
+            <input type="text" name="firstName" required>
+            
+            <label>Last name:</label>
+            <input type="text" name="lastName" required>
+            
+            <label>Email Address:</label>
+            <input type="email" name="email" required>
+            
+            <label>Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <p class="requirements">Passwords must be minimum of 12 characters and include 1 capital letter, 1 number and 1 special character.</p>
+            
+            <button type="button" onclick="togglePassword()">Show Password</button>
+            <br><br>
+            <button type="submit">Register</button>
+        </form>
+    </div>
