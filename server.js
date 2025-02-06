@@ -10,7 +10,7 @@ const expressLayouts = require("express-ejs-layouts");
 const static = require("./routes/static");
 const env = require("dotenv").config();
 const app = express();
-const utilities = require("./utilities");
+const utilities = require("./utilities/");
 const baseController = require("./controllers/baseController");
 const inventoryRoute = require("./routes/inventoryRoute");
 const session = require("express-session");
@@ -51,10 +51,10 @@ app.use(function(req, res, next){
 app.use(static);
 
 //Index route
- app.get("/", baseController.buildHome);
+ app.get("/",utilities.handleErrors(baseController.buildHome))
 
 // Inventory routes
-app.use("/inv", inventoryRoute);
+app.use("/inv", inventoryRoute)
 
 // Account Route 
 app.use("/account", require("./routes/accountRoute"))
@@ -79,6 +79,7 @@ const host = process.env.HOST;
 app.use(async (err, req, res, next) => {
   let nav = await utilities.getNav()
   console.error(`Error at: "${req.originalUrl}": ${err.message}`)
+  if(err.status == 404){ message = err.message} else {message = 'Oh no! There was a crash. Maybe try a different route?'}
   res.render("errors/error", {
     title: err.status || 'Server Error',
     message: err.message,
