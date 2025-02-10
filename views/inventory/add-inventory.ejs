@@ -1,0 +1,12 @@
+<form action="/inv/add-inventory" method="POST" id="add-inventory-form">
+    <label for="vehicle_name">Vehicle Name:</label>
+    <input type="text" name="vehicle_name" id="vehicle_name" required>
+    
+    <label for="classification">Classification:</label>
+    <%= classificationList %> <!-- dynamically populated select list -->
+    
+    <label for="image">Image:</label>
+    <input type="file" name="image" id="image">
+  
+    <button type="submit">Add Inventory</button>
+  </form>

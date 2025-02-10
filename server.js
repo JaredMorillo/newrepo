@@ -15,6 +15,7 @@ const baseController = require("./controllers/baseController");
 const inventoryRoute = require("./routes/inventoryRoute");
 const session = require("express-session");
 const pool = require('./database/');
+const bodyParser = require("body-parser")
 
 /* ***********************
  * View Engine and Templates
@@ -44,6 +45,10 @@ app.use(function(req, res, next){
   res.locals.messages = require('express-messages')(req, res)
   next()
 })
+
+// Unit 4, Process Registration Activity
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true })) // for passing application/ x-www-form-urlencoded
 
 /* ***********************
  * Routes
