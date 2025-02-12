@@ -1,10 +1,8 @@
-// Needed Resources 
-const express = require("express")
-const router = new express.Router() 
-const invController = require("../controllers/invController")
-const utilities = require("../utilities")
-const { validateInventory } = require('../views/middleware/validationMiddleware'); 
-
+const express = require("express");
+const router = new express.Router();
+const invController = require("../controllers/invController");
+const utilities = require("../utilities");
+const inventoryValidation = require("../utilities/inventory-validation");
 
 // Route to build inventory by classification view
 router.get("/type/:classificationId", invController.buildByClassificationId);
@@ -17,27 +15,18 @@ router.get("/add-classification", invController.addClassificationView);
 
 router.get("/add-inventory", invController.addInventoryView);
 
-router.post("/add-classification", utilities.handleErrors(invController.addNewClassification));
+router.post(
+  "/add-classification",
+  inventoryValidation.classificationRule(),
+  inventoryValidation.checkClassificationData,
+  utilities.handleErrors(invController.addNewClassification)
+);
 
-router.post("/add-inventory", utilities.handleErrors(invController.addNewInventory));
-
-router.get('/add-inventory', async (req, res) => {
-    const classificationList = await Util.buildClassificationList();
-    res.render('inventory/add-inventory', { 
-        flashMessage: req.flash('message'), 
-        errors: req.flash('errors'),
-        classificationList: classificationList,
-        inv_make: '',
-        inv_model: '',
-        inv_description: '',
-        inv_price: '',
-        inv_year: '',
-        inv_miles: '',
-        inv_color: ''
-    });
-});
-
-router.post('/add-inventory', validateInventory, invController.addNewInventory);
-
+router.post(
+  "/add-inventory",
+  inventoryValidation.newInventoryRules(),
+  inventoryValidation.checkInventoryData,
+  utilities.handleErrors(invController.addNewInventory)
+);
 
 module.exports = router;
