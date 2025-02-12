@@ -1,12 +1,24 @@
-<form action="/inv/add-inventory" method="POST" id="add-inventory-form">
-    <label for="vehicle_name">Vehicle Name:</label>
-    <input type="text" name="vehicle_name" id="vehicle_name" required>
-    
+<h1>Add to the Inventory</h1>
+  <form action="/inv/add-inventory" method="post" id="add-inventory-form">
     <label for="classification">Classification:</label>
-    <%= classificationList %> <!-- dynamically populated select list -->
-    
-    <label for="image">Image:</label>
-    <input type="file" name="image" id="image">
-  
-    <button type="submit">Add Inventory</button>
+    <select name="classification_name" id="classification_name"></select>
+    <label for="vehicleMake">Make:</label>
+    <input type="text" name="inv_make">
+    <label for="vehicleModel">Model:</label>
+    <input type="text" name="inv_model">
+    <label for="vehicleDescription">Description:</label>
+    <input type="text" name="inv_description">
+    <label for="vehicleImage">Image:</label>
+    <input type="image" name="inv_image" value="/public/images/vehicles/no-image.png">
+    <label for="vehicleThumbnail">Thumbnail:</label>
+    <input type="thumbnail" name="inv_thumbnail" value="/public/images/vehicles/no-image-tn.png">
+    <label for="vehiclePrice">Price:</label>
+    <input type="number" name="inv_price">
+    <label for="vehicleYear">Year:</label>
+    <input type="number" name="inv_year">
+    <label for="vehicleMiles">Mile:</label>
+    <input type="number" name="inv_miles">
+    <label for="vehicleColor">Color:</label>
+    <input type="text" name="inv_color">
+    <button type:"submit">Add Inventory</button>
   </form>

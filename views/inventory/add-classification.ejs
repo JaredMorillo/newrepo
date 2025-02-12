@@ -1,6 +1,7 @@
 <form action="/inv/add-classification" method="POST" id="add-classification-form">
     <label for="classification_name">Classification Name:</label>
-    <input type="text" name="classification_name" id="classification_name" required>
+    <input type="text" name="classification_name" id="classification_name" 
+    pattern="[a-zA-Z]*" required placeholder="Classification name cannot contain spaces or special characters.">
     <button type="submit">Add Classification</button>
   </form>
   

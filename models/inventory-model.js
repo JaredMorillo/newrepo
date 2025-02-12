@@ -38,4 +38,25 @@ async function getVehicleById(inv_id) {
   }
 }
 
-module.exports = {getClassifications, getInventoryByClassificationId, getVehicleById};
+async function registerClassification(classification_name) {
+  try {
+    const sql = "INSERT INTO classification (classification_name) VALUES ($1)"
+    return await pool.query(sql, [classification_name]) 
+  } catch (error) {
+    console.error("registerClassification" + error)
+  }
+}
+
+async function showClassification(classification_name) {
+  try{
+      const sql = "SELECT * FROM classification WHERE classification_name = $1"
+      const email = await pool.query(sql, [classification_name])
+      return email.rowCount
+  }   catch (error) {
+      return error.message
+  }
+  
+}
+
+
+module.exports = {getClassifications, getInventoryByClassificationId, getVehicleById, registerClassification, showClassification};
