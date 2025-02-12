@@ -1,7 +1,25 @@
-<form action="/inv/add-classification" method="POST" id="add-classification-form">
-    <label for="classification_name">Classification Name:</label>
-    <input type="text" name="classification_name" id="classification_name" 
-    pattern="[a-zA-Z]*" required placeholder="Classification name cannot contain spaces or special characters.">
-    <button type="submit">Add Classification</button>
+<% if (title) {%>
+  <h1><%= title %></h1>
+<%} else {res.redirect('/')} %>
+
+<%- messages() %>
+
+<% if (errors) { %>
+  <ul class="message warning">
+      <% errors.array().forEach(error => { %>
+          <li><%= error.msg %></li>
+      <%  }) %>
+  </ul>
+<% } %>
+
+<div id="registerContainer">
+  <p>Field is required.</p>
+  <form class="formSpread" action="/inv/add-classification" method="post">
+      <fieldset>
+          <label for="carClassification">Classification Name</label>
+          <p>Name must be alphabetic characters only.</p>
+          <input type="text" name="classification_name" id="carClassification" required pattern="[a-zA-Z]*" value="<%= locals.classification_name %>">
+          <button type="submit">Add Classification</button>
+      </fieldset>
   </form>
-  
+</div>

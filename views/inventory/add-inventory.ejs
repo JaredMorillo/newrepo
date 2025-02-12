@@ -1,17 +1,35 @@
-<h1>Add to the Inventory</h1>
+<% if (title) {%>
+  <h1>
+      <%= title %>
+  </h1>
+<%} else {res.redirect('/')} %>
+
+<%- messages() %>
+
+<% if (errors) { %>
+  <ul class="message warning">
+      <% errors.array().forEach(error => { %>
+          <li><%= error.msg %></li>
+      <%  }) %>
+  </ul>
+<% } %>
+
+<div id="registerContainer">
+  <p>All fields are required.</p>
   <form action="/inv/add-inventory" method="post" id="add-inventory-form">
+    <fieldset>
     <label for="classificationList">Classification:</label>
     <%- classificationSelect %> <br>
     <label for="vehicleMake">Make:</label>
-    <input type="text" name="inv_make" required minlength="3" placeholder="Min of 3 characters" <% if(locals.inv_make) { %> value="<%= locals.inv_make %>" <% } %>>
+    <input type="text" name="inv_make" required minlength="3" placeholder="Min of 3 characters" <% if(locals.inv_make) { %> value="<%= locals.inv_make %>" <% } %>>   
     <label for="vehicleModel">Model:</label>
     <input type="text" name="inv_model" required minlength="3" placeholder="Min of 3 characters" <% if(locals.inv_model) { %> value="<%= locals.inv_model %>" <% } %>>
     <label for="vehicleDescription">Description:</label>
     <input type="text" name="inv_description" required><% if(locals.inv_description) { %><%= locals.inv_description %><% } %></textarea>
     <label for="vehicleImage">Image:</label>
-    <input type="image" name="inv_image" size="30" required <% if(locals.inv_image) { %> value="<%= locals.inv_image %>" <% } else { %> value="/images/vehicles/no-image.png" <% } %>>
+    <input type="text" name="inv_image" size="30" required <% if(locals.inv_image) { %> value="<%= locals.inv_image %>" <% } else { %> value="/images/vehicles/no-image.png" <% } %>>
     <label for="vehicleThumbnail">Thumbnail:</label>
-    <input type="thumbnail" name="inv_thumbnail"  size="30" required <% if(locals.inv_image) { %> value="<%= locals.inv_image %>" <% } else { %> value="/images/vehicles/no-image-tn.png" <% } %>>
+    <input type="text" name="inv_thumbnail"  size="30" required <% if(locals.inv_image) { %> value="<%= locals.inv_image %>" <% } else { %> value="/images/vehicles/no-image-tn.png" <% } %>>
     <label for="vehiclePrice">Price:</label>
     <input type="number" name="inv_price"size="10" placeholder="decimal or integer numbers only" required pattern="^[1-9]\d*(\.\d+)?$" <% if(locals.inv_price) { %> value="<%= locals.inv_price %>" <% } %>>
     <label for="vehicleYear">Year:</label>
@@ -21,4 +39,6 @@
     <label for="vehicleColor">Color:</label>
     <input type="text" name="inv_color" required <% if(locals.inv_color) { %> value="<%= locals.inv_color %>" <% } %>>
     <button type:"submit">Add Vehicle</button>
+  </fieldset>
   </form>
+</div>
