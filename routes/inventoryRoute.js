@@ -29,4 +29,22 @@ router.post(
   utilities.handleErrors(invController.addNewInventory)
 );
 
+/*****************************
+ * Deliver the delete confirmation view
+ * Unit 5, Delete Activity
+ *****************************/
+router.get(
+  "/delete/:inv_id",
+  utilities.handleErrors(invController.deleteView)
+)
+
+/*******************************
+ * Process the delete inventory request
+ * Unit 5, Delete Activity
+ *******************************/
+router.post("/delete",
+  utilities.handleErrors(invController.deleteItem)
+)
+
+
 module.exports = router;
