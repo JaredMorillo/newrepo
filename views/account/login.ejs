@@ -1,4 +1,12 @@
+<%# Unit 4, Deliver Login View activity %>
+
+<% if (title) { %>
 <h1><%= title %></h1>
+<% } else {
+    res.redirect('/')
+} 
+%>
+
 <form id="loginForm" action="/account/login" method="POST">
     <label>Email Address:</label>
     <input type="email" name="email" required>

@@ -15,7 +15,10 @@ const baseController = require("./controllers/baseController");
 const inventoryRoute = require("./routes/inventoryRoute");
 const session = require("express-session");
 const pool = require('./database/');
-const bodyParser = require("body-parser")
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
+
+
 
 /* ***********************
  * View Engine and Templates
@@ -49,6 +52,11 @@ app.use(function(req, res, next){
 // Unit 4, Process Registration Activity
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) // for passing application/ x-www-form-urlencoded
+
+// Unit 5, Login Activity
+app.use(cookieParser())
+// Unit 5, Login Process activity
+app.use(utilities.checkJWTToken)
 
 /* ***********************
  * Routes
