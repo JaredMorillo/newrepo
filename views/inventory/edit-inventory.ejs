@@ -1,0 +1,47 @@
+<% if (title) {%>
+    <h1><%= title %></h1>
+  <%} else {res.redirect('/')} %>
+  
+  <%- messages() %>
+  
+  <% if (errors) { %>
+    <ul class="message warning">
+        <% errors.array().forEach(error => { %>
+            <li><%= error.msg %></li>
+        <%  }) %>
+    </ul>
+  <% } %>
+
+<div id="registerContainer">
+    <p>All fields are required</p>
+    <form action="/inv/update" method="post" id="updateForm">
+        <fieldset>
+            <label for="classificationList">Classification</label>
+            <%- classificationSelect %>
+
+            <label for="invMake">Make</label>
+            <input type="text" name="inv_make" id="invMake" required minlength="3" placeholder="Min of 3 characters" <% if(locals.inv_make) { %>
+                value="<%= locals.inv_make %>"<% } %>>
+            
+            <label for="invModel">Make</label>
+            <input type="text" name="inv_model" id="invModel" required minlength="3" placeholder="Min of 3 characters" <% if(locals.inv_model) { %>
+                value="<%= locals.inv_model %>"<% } %>>
+
+            <label for="invDescription">Description</label>
+            <textarea name="inv_description" id="invDescription" required><% if(locals.inv_description) { %><%= locals.inv_description %><% } %></textarea>
+
+            <label for="invMiles">Miles</label>
+            <input type="number" name="inv_miles" size="10" placeholder="digits only" required pattern="^\d+$" <% if(locals.inv_miles) { %> value="<%= locals.inv_miles %>" <% } %>>
+
+            <label for="invColor">Color</label>
+            <input type="text" name="inv_color" required <% if(locals.inv_color) { %> value="<%= locals.inv_color %>" <% } %>>
+
+            <input type="hidden" name="inv_id"
+            <% if(locals.inv_id)  { %> value="<%= locals.inv_id %>" <% } %>>
+
+            <button disabled type="submit">Update Vehicle</button>
+        </fieldset>
+    </form>
+</div>
+
+<script src="../../js/inv-update.js"></script>

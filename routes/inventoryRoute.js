@@ -46,5 +46,25 @@ router.post("/delete",
   utilities.handleErrors(invController.deleteItem)
 )
 
+/*******************************
+ * Get inventory for AJAX Route
+ * Unit 5, Select inv item activity
+ *******************************/
+router.get(
+  "/getInventory/:classification_id",
+  utilities.checkAccountType,
+  utilities.handleErrors(invController.getInventoryJSON)
+)
+
+/*******************************
+ * Get inventory for Edit Route
+ * Unit 5, Update Inventory Step 1 activity
+ *******************************/
+router.get(
+  "/edit/:inv_id",
+  utilities.checkAccountType,
+  utilities.handleErrors(invController.editInvItemView)
+)
+
 
 module.exports = router;
