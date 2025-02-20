@@ -199,8 +199,8 @@ invCont.editInvItemView = async function (req, res, next) {
     inv_image: invData.inv_image,
     inv_thumbnail: invData.inv_thumbnail,
     inv_price: invData.inv_price,
-    inv_miles: itemData.inv_miles,
-    inv_color: itemData.inv_color,
+    inv_miles: invData.inv_miles,
+    inv_color: invData.inv_color,
     classification_id: itemData.classification_id
   })
 }

@@ -52,7 +52,6 @@ router.post("/delete",
  *******************************/
 router.get(
   "/getInventory/:classification_id",
-  utilities.checkAccountType,
   utilities.handleErrors(invController.getInventoryJSON)
 )
 
@@ -62,7 +61,6 @@ router.get(
  *******************************/
 router.get(
   "/edit/:inv_id",
-  utilities.checkAccountType,
   utilities.handleErrors(invController.editInvItemView)
 )
 

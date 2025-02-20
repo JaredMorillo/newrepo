@@ -21,17 +21,15 @@ async function registerAccount(account_firstname, account_lastname,
  * Checking for existing email
  * Unit 4, Stickiness Activity
  *******************************/
-
 async function checkExistingEmail(account_email) {
-    try{
-        const sql = "SELECT * FROM account WHERE account_email = $1"
-        const email = await pool.query(sql, [account_email])
-        return email.rowCount
-    }   catch (error) {
-        return error.message
+    try {
+      const sql = "SELECT * FROM account WHERE account_email = $1";
+      const email = await pool.query(sql, [account_email]);
+      return email.rowCount;
+    } catch (error) {
+      return error.message;
     }
-    
-}
+  }
 
 /********************************
  * Return account data using email address
@@ -49,4 +47,4 @@ async function getAccountByEmail(account_email) {
     }
 }
 
-module.exports = { registerAccount}
+module.exports = { registerAccount, checkExistingEmail, getAccountByEmail}
