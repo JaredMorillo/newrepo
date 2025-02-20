@@ -127,7 +127,7 @@ invCont.addNewInventory = async function (req, res, next) {
     });
   } else {
     req.flash("message warning", "Sorry, the insert failed.");
-    res.status(501).render("inventory/add-vehicel", {
+    res.status(501).render("inventory/add-vehicle", {
       title: "Add New Inventory",
       nav,
       classificationSelect: classificationSelect,
@@ -183,24 +183,24 @@ invCont.deleteItem = async function (req, res, next) {
 invCont.editInvItemView = async function (req, res, next) {
   const inv_id = parseInt(req.params.inv_id)
   let nav = await utilities.getNav()
-  const invData = await invModel.getInventoryById(inv_id)
-  const classificationSelect = await utilities.buildClassificationList(invData.classification_id)
-  const itemName = `${invData.inv_make} ${invData.inv_model}`
-  res.render("./inventory/edit-vehicle", {
-    title:"Edit " + itemName,
+  const itemData = await invModel.getInventoryById(inv_id)
+  const classificationSelect = await utilities.buildClassificationList(itemData.classification_id)
+  const itemName = `${itemData.inv_make} ${itemData.inv_model}`
+  res.render("./inventory/edit-inventory", {
+    title: "Edit " + itemName,
     nav,
     classificationSelect: classificationSelect,
     errors: null,
-    inv_id: invData.inv_id,
-    inv_make: invData.inv_make,
-    inv_model: invData.inv_model,
-    inv_year: invData.inv_year,
-    inv_description: invData.inv_description,
-    inv_image: invData.inv_image,
-    inv_thumbnail: invData.inv_thumbnail,
-    inv_price: invData.inv_price,
-    inv_miles: invData.inv_miles,
-    inv_color: invData.inv_color,
+    inv_id: itemData.inv_id,
+    inv_make: itemData.inv_make,
+    inv_model: itemData.inv_model,
+    inv_year: itemData.inv_year,
+    inv_description: itemData.inv_description,
+    inv_image: itemData.inv_image,
+    inv_thumbnail: itemData.inv_thumbnail,
+    inv_price: itemData.inv_price,
+    inv_miles: itemData.inv_miles,
+    inv_color: itemData.inv_color,
     classification_id: itemData.classification_id
   })
 }

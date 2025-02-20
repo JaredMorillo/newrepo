@@ -47,6 +47,18 @@ async function registerClassification(classification_name) {
   }
 }
 
+async function getInventoryById(invId) {
+  try {
+    const data = await pool.query(
+      "SELECT * FROM public.inventory AS i JOIN public.classification AS c ON i.classification_id = c.classification_id WHERE i.inv_id = $1",
+      [invId]
+    );
+    return data.rows[0];
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 async function addInventory(
   inv_make,
   inv_model,
@@ -133,4 +145,5 @@ async function updateInventory(
   }
 }
 
-module.exports = {getClassifications, getInventoryByClassificationId, getVehicleById, registerClassification, addInventory, deleteInventoryItem, updateInventory};
+module.exports = {getClassifications, getInventoryByClassificationId, getVehicleById, registerClassification, 
+  addInventory, deleteInventoryItem, updateInventory, getInventoryById};
